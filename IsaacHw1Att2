@@ -1,0 +1,57 @@
+Set up machine in amazon the T2
+2) Look at existing instances 
+Click on descriptions → copy the ip
+curl -sSL https://get.docker.com | sh      # curl lets you download from 
+Ssl lets your secure hmtl link
+Sudo Usermod -aG docker Ubuntu
+Logout
+//* we are going to use a program called curl.
+   Curl downloads files from a web address.
+   We are going to give it some flags */
+Command : curl -sSL https://get.docker.com # good practice
+Command : curl -sSL https://get.docker.com | sh # bad practice
+  // the |sh lets us pipe in a random script into our shell directly. This one lets docker take over the aws instance. Normally you would download and analyse this.
+            Next command
+sudo usermod -a -G docker ubuntu
+Command : sudo usermod -aG dockeR ubuntu // if we dont do this, the everytime we run docker we will have to do SUDU or SUDO
+COMMAND : cntrl D disconnects
+Command : docker -v (? I think) #   this is supposed to recconect us 
+docker
+Command : docker pull jupyter/datascience-notebook
+Command : docker run -v /home/ubuntu:/home/jovyan -p 8888:8888 -d jupyter/datascience-notebook
+     #Jovyan is the user in the jupyter image
+    #datascience-notebook is the name of the image
+Command docker pull jupyter/datascience-notebook
+Command : docker images   # lets you check images
+// you could do : docker pull mongo
+Command : docker tag jupyter/datascience-notebook dsnb # created an alias for dsnb
+     docker tag jupyter/datascience-notebook dsnb
+    docker run -v /home/ubuntu:/home/jovyan -p 8888:8888 -d dsnb
+Image is a class ( defines an object and what it will be )
+The object is the container, the object exists in memory
+ Command : docker images # lets us see classes
+Command : docker ps # lets us see what is running, what are existing objects
+		// docker defines images in reference to other images
+Anything we have to get jupyter to do we ask docker to do for us in jupiter. Docker manages jupyter. We dont have to mange the versions. Other people do via jupyter comittee and mange the docker image for the jupiter project.
+Sooooo now what can we do
+  Lets put in the ip address of our amazon server including the port
+http://IPaddres:8888
+http://35.163.88.54:8888
+We will run docker ps
+Then we do docker exec command 
+If you get disconnected recconect 
+Then to get the token do 
+	Command: docker ps
+		Grab the container ID , which looks like b7ed
+      Command docker exec b7ed jupyter notebook list
+If you get disconnected recconect 
+Then to get the token do 
+	Command: docker ps
+		Grab the container ID , which looks like b7ed
+      Command docker exec b7ed jupyter notebook list
+      
+  /* ongratulations, you have installed Jupyter Notebook! To run the notebook, run the following command at the Terminal (Mac/Linux) or Command Prompt (Windows):
+Commad to run ::    jupyter notebook
+Then navigate to this http://localhost:8888/tree/site-packages/notebook http://localhost:8888/tree/site-packages
+Open Notebooks Dashboard https://jupyter.readthedocs.io/en/latest/running.html#running
+*/
